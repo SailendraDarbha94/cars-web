@@ -17,7 +17,7 @@ const ClaimImageItem = ({ image }: any) => {
         console.log("inside component __________", url)
         setImager(url);
     } catch (err) {
-        setImager("/newFavicon.png")
+        setImager("/cars.png")
         console.log(JSON.stringify(err))
     }
   };
@@ -27,7 +27,7 @@ const ClaimImageItem = ({ image }: any) => {
   }, []);
 
   return (
-        <img src={imager} alt="missing person" className="w-full h-full" />
+        <img src={imager} alt="image n/a" className="w-full h-full" />
   );
 };
 
