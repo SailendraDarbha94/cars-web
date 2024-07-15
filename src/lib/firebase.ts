@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 // import * as firebase from "firebase";
 // Optionally import the services that you want to use
-import { browserLocalPersistence, initializeAuth } from 'firebase/auth';
+import { browserLocalPersistence, initializeAuth } from "firebase/auth";
 import { getDatabase, ref } from "firebase/database";
 // import {...} from "firebase/firestore";
 // import {...} from "firebase/functions";
@@ -9,23 +9,23 @@ import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
 // Initialize Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDiaqRM6QzNUDudOm4C07V5tu4z1wRzcY8",
-    authDomain: "cars-3eab2.firebaseapp.com",
-    projectId: "cars-3eab2",
-    storageBucket: "cars-3eab2.appspot.com",
-    databaseURL: "https://cars-3eab2-default-rtdb.firebaseio.com",
-    messagingSenderId: "671260169378",
-    appId: "1:671260169378:web:f7b88da1b088e5411cf3fb",
-    measurementId: "G-L3MQME4W5T"
-  };
-  
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  databaseURL: process.env.NEXT_PUBLIC_DATABASE_URL,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+};
+
 // if (!firebase.apps.length) {
 //   firebase.initializeApp(firebaseConfig);
 // }
 
 const app = initializeApp(firebaseConfig);
 
-export default app
+export default app;
 // For more information on how to access Firebase in your project,
 // see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
 
