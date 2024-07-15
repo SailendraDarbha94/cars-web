@@ -8,6 +8,27 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+@font-face {
+  font-family: "pLight";
+  src: url("../../public/fonts/Poppins-Light.ttf");
+}
+@font-face {
+  font-family: "pMedium";
+  src: url("../../public/fonts/Poppins-Medium.ttf");
+}
+@font-face {
+  font-family: "pSemiBold";
+  src: url("../../public/fonts/Poppins-SemiBold.ttf");
+}
+@font-face {
+  font-family: "pBold";
+  src: url("../../public/fonts/Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: "pExtraBold";
+  src: url("../../public/fonts/Poppins-ExtraBold.ttf");
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -24,6 +45,11 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.bg-cars {
+  background-color: rgb(224, 218, 194);
+  border-radius: 10px;
 }
 
 @layer utilities {
