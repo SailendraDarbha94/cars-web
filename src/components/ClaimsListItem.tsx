@@ -4,8 +4,11 @@ import app from "@/lib/firebase";
 import { getBytes, getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
 import ClaimImageItem from "./ClaimImageItem";
+import { useRouter } from "next/navigation";
 
-const ClaimsListItem = ({ claim }: any) => {
+const ClaimsListItem = ({ claim, claimId }: any) => {
+
+  const router = useRouter();
 
   return (
     <div className="flex flex-row flex-wrap max-w-full font-pMedium bg-blue-400">
@@ -14,10 +17,9 @@ const ClaimsListItem = ({ claim }: any) => {
         <h1 className="text-lg">Middle Name : {claim.middle_name}</h1>
         <h1 className="text-lg">Last Name : {claim.last_name}</h1>
         <h1 className="text-lg">Email : {claim.email}</h1>
-        <h1 className="text-lg">Risk Type : {claim.risk_type}</h1>
-        <h1 className="text-lg">Island : {claim.island}</h1>
-        <h1 className="text-lg">Policy Number: {claim.policy_number}</h1>
-        <h1 className="text-lg">Adjuster : {claim.adjuster}</h1>
+        <br />
+        <br />
+        <button onClick={() => router.push(`/admin/claims/${claimId}`)} className="bg-primaryMore text-white text-lg p-2 rounded-md max-w-sm mx-auto">View Details</button>
       </div>
       <div className="bg-purple-300 w-1/2 flex flex-row flex-wrap">
       {/* {JSON.stringify(claim.images)} */}
