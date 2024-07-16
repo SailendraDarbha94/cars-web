@@ -1,6 +1,6 @@
 "use client";
 import app from "@/lib/firebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { User } from "@/constants/interfaces";
 import { useRouter } from "next/navigation";
@@ -40,8 +40,20 @@ const Page = () => {
     }
   };
 
+  const logoutUser = async () => {
+    try {
+      await signOut(auth)
+      router.push("/")
+    } catch (err) {
+      console.log(JSON.stringify(err))
+    }
+  }
+
   return (
     <div className="w-full min-h-screen p-4">
+      <div className=" fixed right-0 top-20">
+        <button className="bg-red-500 text-white font-pBold p-2 rounded-l-lg" onClick={logoutUser}>Logout</button>
+      </div>
       <h1 className="font-pBold text-2xl md:text-5xl text-center mt-4 mb-10 p-4 border-b-2 border-black">
         Admin Dashboard
         {user ? (
