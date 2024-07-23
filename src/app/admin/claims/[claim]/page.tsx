@@ -5,11 +5,12 @@ import app from "@/lib/firebase";
 import { child, get, getDatabase, ref } from "firebase/database";
 
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Page = () => {
   const { claim } = useParams();
-
+  const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [claimDetails, setClaimDetails] = useState<any>(null);
 
@@ -69,6 +70,14 @@ const Page = () => {
           <h1 className="my-2 text-xl md:text-3xl font-pExtraBold underline">
             Claim Details
           </h1>
+          <div className="fixed left-0 top-2">
+            <button
+              className="bg-red-500 text-white font-pBold p-2 rounded-r-lg"
+              onClick={() => router.push("/admin")}
+            >
+              Back
+            </button>
+          </div>
           {claimDetails ? (
             <div className="flex flex-row flex-wrap">
               <div className="w-1/2">
@@ -138,15 +147,18 @@ const Page = () => {
           <div>
             {claimDetails ? (
               <div className="flex flex-wrap justify-evenly">
-                {claimDetails.images.map((claim:any, idx:any) => {
+                {claimDetails.images.map((claim: any, idx: any) => {
                   return (
-                    <div key={idx} className="w-[45%] max-h-fit rounded-xl overflow-hidden my-10">
+                    <div
+                      key={idx}
+                      className="w-[45%] max-h-fit rounded-xl overflow-hidden my-10"
+                    >
                       <ClaimImageItem image={claim} />
                     </div>
-                  )
+                  );
                 })}
               </div>
-            ):null}
+            ) : null}
           </div>
         </div>
       )}
