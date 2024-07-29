@@ -2,7 +2,7 @@
 
 import ClaimImageItem from "@/components/ClaimImageItem";
 import app from "@/lib/firebase";
-import { child, get, getDatabase, ref } from "firebase/database";
+import { child, get, getDatabase, ref, remove } from "firebase/database";
 
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -30,6 +30,20 @@ const Page = () => {
       setLoading(false);
     }
   };
+
+  const deleteClaim = async () => {
+    setLoading(true)
+    try {
+      const db = getDatabase(app);
+      const postRef = ref(db, `claims/${claim}`);
+      await remove(postRef);
+      setLoading(false);
+      router.push("/admin")
+    } catch (err) {
+      setLoading(false);
+      console.log(JSON.stringify(err))
+    }
+  }
 
   useEffect(() => {
     fetchClaimDetails();
@@ -141,6 +155,9 @@ const Page = () => {
                 <h2 className="font-pSemiBold text-lg p-2 border-b-2 border-black">
                   {claimDetails.island ? claimDetails.island : "N/A"}
                 </h2>
+              </div>
+              <div className="w-full p-2">
+                <button className="mx-auto block bg-red-500 text-white p-2 rounded-xl font-bold mt-4" onClick={deleteClaim}>DELETE</button>
               </div>
             </div>
           ) : null}
