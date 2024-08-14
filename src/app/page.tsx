@@ -24,8 +24,8 @@ const Page = () => {
               Admin Login
             </a>
           </div>
-          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="/icon.JPG" alt="logo" className="" />
+          <div className="hidden rounded-xl lg:mt-0 lg:col-span-5 lg:flex">
+            <img src="/cars-logo.jpeg" alt="logo" className="mx-auto rounded-xl" />
           </div>
         </div>
       </section>
