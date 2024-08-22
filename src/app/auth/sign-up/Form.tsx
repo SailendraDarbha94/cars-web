@@ -58,7 +58,7 @@ const Form = ({ saveUserData }: any) => {
 
     } catch (err) {
       setLoading(false);
-      JSON.stringify(err);
+      console.log(JSON.stringify(err));
     }
   };
 
